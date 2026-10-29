@@ -189,3 +189,91 @@ The principles that come up again and again:
 - Captions and results headings state the finding first, then what is shown. Volume is not
   quality: robustness tables that change no answer dilute the message.
 
+## Part 4: Scoring rubric (used by the judge)
+
+Score each section **1–10** against the anchors below. **Be strict.** Half of all real
+submissions are Successful Participant and about 1% are Outstanding, so start from the
+assumption that a paper is ordinary and make it earn every point above 6.
+
+This rubric is stricter than the real panel. Papers that won real Outstanding awards, scored
+blind on it, have landed mostly between about 3 and 6, because real panels forgive gaps that it
+caps. Keep scoring strictly; read the designation estimate as a position on this rubric, not a
+forecast of the real award.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Outstanding level: COMAP could reprint it as the exemplar for this section in the judges' article. No real flaw. |
+| 7–8 | Finalist/Meritorious: complete and well executed; minor gaps a careful judge would note. |
+| 5–6 | Honorable Mention: present and adequate but generic, thinly justified, or partly missing. |
+| 3–4 | Successful Participant: major gaps, errors, or confusion. |
+| 1–2 | Missing, wrong, or counterproductive. |
+
+**Sections and what earns 9–10:**
+
+1. **Summary sheet** (weight 2): stands alone; covers problem, methods in words, final model,
+   *specific numerical results*, and recommendations; one page; makes the judge want to read on.
+   **Cap it at 5 if it has no concrete results.** A summary crowded with intermediate numbers,
+   model codes, symbols or test names does not earn 9–10, however complete: each question's
+   headline answer should read in words a non-specialist can follow.
+2. **Introduction and restatement** (weight 1): brief background, a precise restatement of
+   every question, and a roadmap or flowchart; does not repeat the summary.
+3. **Assumptions and justifications** (weight 1.5): each assumption is necessary, justified
+   (cited where possible), not a fact from the statement, and linked to where it is used and
+   to the sensitivity tests. **Cap at 5 for a laundry list or for unjustified assumptions.**
+4. **Notation and variables** (weight 0.5): a complete, minimal table with units, and
+   consistent use throughout.
+5. **Model development** (weight 3): the choice is motivated and compared with an alternative;
+   it is built step by step from the assumptions; the final model is stated in full; the logic
+   of any code is shown with an algorithm or flowchart; the math is correct and the authors
+   clearly understand it; the statement's hints are carried as mechanisms or their omission is
+   explained; at least one result is derived in closed form where the model allows. **Cap at 6 if the final model is unclear or switches without
+   explanation, and at 4 for an unexplained black box.**
+6. **Results and requirement coverage** (weight 3): every requirement (see the coverage table)
+   gets a specific, quantified, interpreted answer, including the implied requirements; the
+   numbers are consistent with the code outputs; the results pass a reality check. **Cap at 6
+   if any requirement is missing or only gestured at.** A "how many" answer shows the benefit
+   and the cost or harm of extra units, not only a reliability target.
+7. **Sensitivity analysis and validation** (weight 2): key parameters *and* at least one
+   structural assumption are varied; the effect on the actual answers is shown and
+   interpreted; there is validation against data, limiting cases or benchmarks. **Cap at 4 if
+   absent or purely mechanical.**
+8. **Strengths and weaknesses** (weight 1): specific, honest, tied to assumptions, with
+   concrete improvements. **Cap at 5 if generic** (for example "our model is simple"). An
+   improvement listed as future work that public data and an hour's work would have delivered
+   is a missed result, not an honest limitation.
+9. **Non-technical deliverable** (weight 1.5 if required, otherwise drop it): right audience,
+   format and length; no equations; specific recommendations; visuals, and it looks like the
+   requested medium (a designed page for an infographic or web blog); usable by the stated
+   reader.
+10. **Conclusion** (weight 0.5): directly answers each question, without new material.
+11. **References and citations** (weight 1): in-line citations for all outside data, models
+    and figures; real, specific, primary sources. **Cap at 4 for uncited data or figures, and
+    at 2 for any citation that looks fabricated.**
+12. **Presentation and rules** (weight 1): within 25 pages; at least 12pt; table of contents;
+    figures labeled, discussed, and readable in grayscale; captions that lead with the finding; logical flow; clean prose; each
+    named method explained in plain words at first use; lists of numbers in tables or figures
+    rather than prose; tables and figures placed with their text; no identifying names; team
+    number on every page.
+
+**Overall:** report the weighted mean and a **designation estimate**:
+
+| Weighted mean | Estimate |
+|---|---|
+| ≥ 8.6 *and* no section below 7 *and* sections 5 and 6 at 9 or above | Outstanding contender |
+| ≥ 7.8 | Finalist |
+| ≥ 6.8 | Meritorious |
+| ≥ 5.3 | Honorable Mention |
+| below 5.3 | Successful Participant |
+
+Override rules: if any explicit requirement is unanswered, the estimate is at most
+Meritorious; if the summary has no results, at most Honorable Mention; if the paper is over
+the page limit, drop one level.
+
+**The judge's review must also contain:**
+- A **requirement coverage table** listing every question or requirement with
+  *answered / partial / missing* and the page or section.
+- **The biggest weaknesses**, ranked by how much they cost the paper. Each needs its location,
+  why a judge would penalize it, and a concrete fix the authors can make in one revision pass.
+- **Consistency checks**: numbers in the text against `results.json` and the figures;
+  variables used but never defined; assumptions never used; figures never discussed.
+- **Reality checks**: any result whose magnitude, units or sign looks implausible.
