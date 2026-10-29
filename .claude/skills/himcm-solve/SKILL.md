@@ -84,3 +84,63 @@ can see them.
   URL, or a justified estimate), then fetch or construct it into `data/` and log every source
   in `data/SOURCES.md`.
 
+## Stage 4: `model.md`
+
+For each question:
+- **Why this model**: name one simpler alternative and say why yours is better, or why simple
+  is enough. Judges reward a well-explained, well-justified model over a complex black box.
+- **Formulation**: equations, objective and constraints, or the algorithm step by step, in
+  LaTeX math. Define every symbol, and keep notation consistent with `assumptions.md`.
+- **Parameter estimation**: how each parameter gets its value.
+- **Outputs**: exactly what the code will produce for this question.
+- **Validation**: limiting cases, comparison with real data, sanity checks.
+- **Relationships**: if a question asks how two quantities are related, cover strength,
+  functional form, timing (lag) and direction, including feedback: test whether Y helps predict
+  X as well as X → Y. Say which of these you tested.
+- **Choosing the best model**: if a question asks which model is best or most accurate, compare
+  the candidates out of sample at the horizon where the answer will be used, or show accuracy
+  against horizon and say where the ranking changes. If one candidate uses inputs the others
+  lack, say so and answer in two parts: best given that input, and best without it.
+- **Scenarios**: if an answer depends on what people decide (policy, investment, adoption,
+  prices), include at least one scenario built from real, dated, cited commitments or plans
+  next to the stylized cases. Where data allow, drive it through levers a decision-maker
+  controls (for example, activity level × intensity) rather than a bare trend.
+- **How many / how much**: if a question asks for a number of units to supply (hives, staff,
+  vehicles, beds, stock), show what each added unit buys (a marginal curve) next to what it
+  costs: a cited price, and any harm from oversupply (crowding, competition, waste). Recommend a
+  point on that curve, say why, then give the reliability it buys. A reliability target alone is
+  not a decision a reader can weigh.
+- **One closed-form anchor**: derive at least one result by hand from the model's equations: an
+  equilibrium or long-run average, a threshold (break-even, collapse, tipping point) or a scaling
+  law. Use it to explain the main sensitivity ranking in one line, as a limiting-case `assert` in
+  `model.py`, and in one summary sentence.
+- **Show the dynamics**: for a dynamic model, plot one run over the full horizon from a stated
+  starting state, transient included, and show whether the long-run answer depends on that start.
+  If the model has a qualitatively different regime (collapse, extinction, saturation), plot runs
+  on either side of the threshold on one figure.
+- **Open cases**: when the statement leaves the case open (which crop, city, product), go deep on
+  one well-documented case, then run three to five named alternatives with sourced inputs through
+  the same model and report them in one table.
+- **Sensitivity plan**: which parameters and assumptions get varied, and over what ranges.
+
+## Stage 5: `model.py`
+
+- One script, organized by question. Paths are relative to the script
+  (`HERE = Path(__file__).parent`) so it runs as `python3 solutions/<name>/model.py`.
+  Use numpy, scipy, pandas and matplotlib, plus the files in `data/`. Fix all random seeds.
+- It must write `figures/*.png` at dpi 200 or more, with labeled axes and units, a legend
+  where needed, and a style readable in grayscale. It must write `results.json`, holding every
+  number the paper will cite, nested by question. It must also write `model_output.txt`, a
+  readable log of the run.
+- **Sensitivity analysis is required.** Vary each key parameter ±10–20% or across its
+  plausible range one at a time, and show the effect on each headline result (a tornado chart
+  or sensitivity curves). Test at least one assumption by swapping in an alternative. Rerun at
+  least one headline answer on another version of the input data (a different source, sampling
+  frequency or subset) and report how far it moves. If the model is stochastic, use Monte Carlo
+  and report spread, not single runs.
+- Include validation checks such as `assert`s on conservation laws, bounds and limiting cases.
+- **Run it and fix it until it works**: `python3 solutions/<name>/model.py`. Repeat until it
+  exits cleanly. Then open the figures with Read and check them as an image, fixing clipped
+  labels, unreadable axes and empty plots. Check that the results are plausible in the real
+  world; implausible numbers mean a bug or a bad assumption, so fix the cause.
+
