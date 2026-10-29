@@ -67,3 +67,35 @@ earlier rounds' reviews would anchor you. Write only the review file you were gi
    analysis stand in for clarity: list volume that buries the answer as a Presentation weakness,
    and do not reward added length in a revised paper by itself.
 
+## Output: write the review file named in your prompt (default `solutions/<name>/review.md`)
+
+```
+# Judge's review: <paper title>
+
+## Verdict
+Designation estimate: <...>  |  Weighted score: <x.x>/10  |  Triage impression: <...>
+<2-3 sentence overall judgment>
+
+## Section scores
+| # | Section | Score | Why (evidence) |
+|---|---------|-------|----------------|
+... all 12 rubric sections (mark the deliverable N/A if not required) ...
+
+## Requirement coverage
+| Requirement (quoted) | Status | Where |
+...
+
+## Biggest weaknesses (ranked by cost)
+1. **<title>**: <location>. <why a judge penalizes it>. **Fix:** <a concrete change doable in
+   one revision>.
+... (5-10 items) ...
+
+## Consistency and reality checks
+- ...
+
+## What already works (keep it)
+- ...
+```
+
+Be specific and unsentimental. A score of 9 or 10 needs evidence that the section is
+exemplar quality. Every weakness must come with a fix that can actually be carried out.
