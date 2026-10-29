@@ -215,3 +215,63 @@ When the draft is complete:
    source. Fix stale numbers and typos.
 3. Compile once (see Stage 8) so the judge can see `paper.pdf` and the real page count.
 
+## Stage 7: Judge, revise, re-judge (2 or 3 revisions)
+
+Each round uses a **fresh** himcm-judge subagent, which keeps every review independent of your
+reasoning and of earlier reviews. If subagents are unavailable, follow
+`.claude/agents/himcm-judge.md` yourself and take its adversarial stance seriously. Create
+`solutions/<name>/reviews/` before the first round.
+
+For round r = 1, 2, 3, 4:
+1. **Snapshot** the current version: copy `paper.tex`, `model.py`, `results.json`,
+   `model_output.txt` and `figures/` into `solutions/<name>/reviews/r<r>/`.
+2. **Judge:** spawn himcm-judge with the prompt
+   `Judge solutions/<name>/ - write solutions/<name>/reviews/round<r>.md.`
+3. **Decide.** Read the verdict and stop (go to step 6) if any of these hold:
+   - r = 4, so three revisions are done;
+   - the estimate is "Outstanding contender";
+   - r ≥ 3 and the weighted score rose by less than 0.2 over round r−1.
+
+   Always do at least two revisions (unless the estimate is "Outstanding contender"): fresh
+   judges disagree by about a point on individual sections even when their totals match, so one
+   flat round is noise, not a plateau.
+   If the latest score is *lower* than an earlier round's, restore the best-scoring snapshot
+   (copy its files back) and say so in `review.md`.
+4. **Revise.** Address that round's biggest weaknesses in priority order. If a fix needs new
+   analysis, change `model.py`, rerun it, and carry the new numbers and figures into the paper.
+   Recompile and stay under 25 pages. **Length budget:** a revision must not make the paper
+   longer overall. For each paragraph, table or figure you add, cut or merge one that changes no
+   answer (often an extra robustness table). More material is not a fix for "unclear" or
+   "crowded".
+5. **Log.** Append a `## Revision log` to `reviews/round<r>.md`. For each weakness, say what
+   changed and where, or why it was not fixed. Then start the next round.
+6. **Final polish.** Take the review of the version you are keeping (the restored snapshot's
+   round, if you restored one) and make every fix from its weaknesses and section notes that
+   needs no new modeling: verdict wording, summary density, plain-language explanations, labels
+   and units, layout and float placement, notation, citations. Recompile, but do not re-judge.
+7. **Write `review.md`.** Start with a table: one row per rubric section, one column per round,
+   plus rows for the weighted score and the estimate. Say which version is final and why. Then
+   include the final round's full review, followed by every round's revision log in order, and
+   last the fixes from step 6 under "Final polish (not re-judged)".
+
+## Stage 8: Compile
+
+Compile `paper.tex` to `paper.pdf` with `tectonic` (or `latexmk -pdf`), from inside the
+solution folder so the figure paths resolve.
+
+- Compile error: fix `paper.tex` and retry until it compiles.
+- Over 25 pages (not counting the Report on Use of AI): cut, moving detail to tighter prose,
+  and recompile.
+- **LaTeX not installed:** do not try to install it. Tell the user (`brew install tectonic` on
+  macOS) and give a page estimate.
+
+## Final report (your last message)
+
+- The solution folder, and each file it contains with a one-line description.
+- The reference papers you read, if any.
+- The judge's weighted score and designation estimate for each round, what each revision
+  changed, and what the final polish changed.
+- Compile status and page count, or a clear statement that LaTeX is not installed, with the
+  install command.
+- Caveats: estimated data, unanswered or weakly answered requirements, anything still placeholder
+  (team control number).
