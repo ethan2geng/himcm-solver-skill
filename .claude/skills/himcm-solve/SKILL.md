@@ -144,3 +144,74 @@ For each question:
   labels, unreadable axes and empty plots. Check that the results are plausible in the real
   world; implausible numbers mean a bug or a bad assumption, so fix the cause.
 
+## Stage 6: `paper.tex`
+
+Start from `.claude/skills/himcm-solve/paper-template.tex` and copy it to
+`solutions/<name>/paper.tex`. The paper must stay **under 25 pages including the summary sheet**.
+The "Report on Use of AI" at the end does not count toward that limit. Budget roughly: summary
+1, contents 1, introduction 1–2, assumptions 1–2, models and results 10–13, sensitivity 2–3,
+strengths and weaknesses 1, required letter or memo 1, references 1.
+
+1. **Summary sheet**, exactly one page and written last. It covers the problem, the approach for
+   each question, the key quantitative results (actual numbers), the recommendation, and
+   keywords. Judges read it first, and triage judges may read nothing else. Give each question
+   its headline answer in one or two numbers; leave backtest errors, fitted parameters and
+   intervals to the body unless they are the answer. Name each method by what it does, in
+   words. No model codes (M1, Model B), symbols or test names on this page.
+2. **Introduction**: background, the restatement, an overview of the approach (a small
+   flowchart or roadmap is welcome).
+3. **Assumptions and justifications**: the A1… list, condensed from `assumptions.md`.
+4. **Notation** table.
+5. **Model sections**, one per question: development, then solution, then results. Use the real
+   figures from `figures/` and numbers from `results.json`, and interpret every figure in the text.
+6. **Sensitivity analysis and model validation.**
+7. **Strengths and weaknesses**: specific and honest, with each weakness tied to a possible
+   improvement. Before writing it, sort the improvements you plan to propose. Any that public
+   data and about an hour of coding can deliver (adding an omitted variable, a scenario from
+   real plans, an alternative dataset), do in `model.py` as a robustness check, rerun, and
+   report as a result. Keep here only improvements that are out of reach, and say why.
+8. **Required deliverables** (a letter, memo, etc.) if the problem asks for any, written for the
+   stated audience in plain language. Make it look like the medium asked for: an infographic or
+   web blog is a designed page, not a page of the paper. Give it a headline, the two or three
+   answer numbers in large type, short labelled cards for the top factors or actions (each with
+   its value and direction), one chart whose title states its message, and a sketch if the answer
+   is spatial. Build it as a full-page figure from `model.py` (so every number is computed) or
+   with LaTeX boxes, smallest text 12 pt at print size, under about 150 words for an infographic
+   and 350 for a blog.
+9. **Conclusion** with a direct answer to every question. For every yes/no or agree/disagree
+   question, write one verdict sentence and use it word for word in the summary, the body, the
+   conclusion and any letter or article.
+10. **References**: real sources, cited in the text.
+11. **Report on Use of AI**, starting on its own page after the references. Disclose honestly that
+    the paper was produced with Claude via Claude Code, and how. The template explains what to
+    include.
+
+**Write for a mathematics teacher who is not a specialist.** The first time the paper uses a
+named method, test or statistic (a bootstrap, an information criterion, a unit-root test,
+cross-validation), explain in one to three plain sentences what it does and why this problem
+needs it. If it cannot be explained that briefly, or it changes no answer, cut it. When a
+paragraph would list more than four numbers, put them in a table or figure and use the prose to
+say what the table or figure shows.
+
+**Lead with the finding.** Every figure and table caption opens with its takeaway in one sentence
+("Egg-laying rate moves colony size more than any other factor."), then says what is plotted.
+Title results subsections by what they found where you can. After each key equation, say in one
+plain sentence what it does. The summary sheet holds at most four numbers per paragraph and about
+twelve on the page (numbers copied from the statement excluded). In the body, keep only the
+robustness checks that move or bound a headline answer, and collect the rest in one table.
+
+**Keep floats next to their text.** Place each table and figure with `[H]` or `[htbp]` right
+after the paragraph that introduces it, never before its own section heading. After compiling,
+look at the PDF pages: no heading may be left empty, and no page may be more than a third blank
+except the last page of a section that ends early.
+
+**12-point type everywhere.** Never use `\small`, `\footnotesize`, `\scriptsize`, `\tiny`,
+`\fontsize` or `\linespread`: not in the summary sheet, tables, letter or captions. Judges
+penalize shrunken type. If something does not fit, cut words.
+
+When the draft is complete:
+1. Walk the coverage table in `analysis.md` and confirm every requirement is answered in the paper.
+2. Check that every number in the paper traces to `results.json`, `model_output.txt` or a cited
+   source. Fix stale numbers and typos.
+3. Compile once (see Stage 8) so the judge can see `paper.pdf` and the real page count.
+
