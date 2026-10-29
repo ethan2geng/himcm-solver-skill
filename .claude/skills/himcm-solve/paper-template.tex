@@ -1,0 +1,114 @@
+% HiMCM paper template for the himcm-solve skill.
+% Fill every <...> placeholder. Keep the whole paper under 25 pages including the summary
+% sheet; the Report on Use of AI (last page) does not count toward the limit.
+% 12pt everywhere: never \small, \footnotesize, \scriptsize, \tiny, \fontsize or
+% \linespread (summary, tables, letter, captions). Cut words instead.
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,array,multirow}
+\usepackage{float}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figures/}}
+\setlist{itemsep=2pt,topsep=4pt}
+
+\newcommand{\teamnumber}{0000000}   % placeholder: replace with the real Team Control Number
+\newcommand{\problemletter}{<A>}
+\newcommand{\contestyear}{<2026>}
+\newcommand{\papertitle}{<An Informative, Specific Title>}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Team \#\teamnumber}
+\rhead{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+% ------------------------------------------------------------------ Summary sheet (page 1)
+\thispagestyle{fancy}
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{0.28\textwidth}
+                >{\centering\arraybackslash}p{0.36\textwidth}
+                >{\centering\arraybackslash}p{0.28\textwidth}}
+Problem Chosen & \contestyear & Team Control Number \\
+{\Large\bfseries \problemletter} & HiMCM Summary Sheet & {\Large\bfseries \teamnumber} \\
+\end{tabular}
+\end{center}
+\vspace{-6pt}\noindent\rule{\textwidth}{0.8pt}
+\begin{center}{\large\bfseries \papertitle}\end{center}
+
+% One page. Context in 2-3 sentences; for each question: method + key numerical result;
+% the recommendation; one sentence on robustness (sensitivity). Write it LAST.
+<Summary text.>
+
+\medskip\noindent\textbf{Keywords:} <keyword>; <keyword>; <keyword>; <keyword>
+
+\newpage
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------ Body
+\section{Introduction}
+\subsection{Background}
+\subsection{Restatement of the Problem}
+\subsection{Our Approach}  % roadmap or flowchart figure
+
+\section{Assumptions and Justifications}
+\begin{enumerate}[label=\textbf{A\arabic*.},leftmargin=*]
+  \item \textbf{<Assumption.>} \emph{Justification:} <source or reasoning>.
+\end{enumerate}
+
+\section{Notation}
+\begin{table}[H]\centering
+\begin{tabular}{@{}lll@{}}\toprule
+Symbol & Meaning & Units \\\midrule
+$x$ & <meaning> & <units> \\
+\bottomrule\end{tabular}
+\end{table}
+
+\section{<Model for Question 1>}
+\subsection{Model Development}
+\subsection{Solution and Results}
+% \begin{figure}[H]\centering
+%   \includegraphics[width=0.75\textwidth]{<figure>.png}
+%   \caption{<What it shows and the takeaway.>}\label{fig:<label>}
+% \end{figure}
+
+\section{Sensitivity Analysis and Validation}
+
+\section{Strengths and Weaknesses}
+\subsection{Strengths}
+\subsection{Weaknesses and Possible Improvements}
+
+% \section{Letter to <Audience>}   % only if the problem asks for one
+
+\section{Conclusion}
+
+\begin{thebibliography}{99}
+\bibitem{<key>} <Author(s)>. <Title>. <Publisher or URL>, <year>. Accessed <date>.
+\end{thebibliography}
+
+% ------------------------------------------------------------------ Not counted toward 25 pages
+\clearpage
+\section*{Report on Use of AI}
+\addcontentsline{toc}{section}{Report on Use of AI}
+% COMAP requires disclosure of AI tools: name and version, what they were used for, and the
+% prompts and outputs that mattered. Be accurate; this paper was produced with an AI pipeline.
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Tool:} Claude (Anthropic), model <model id>, run through Claude Code with the
+        \texttt{himcm-solve} pipeline, on <date>.
+  \item \textbf{Use:} <Which stages the AI performed: problem analysis, assumptions, model
+        design, Python code, drafting of this paper, simulated judging and revision.>
+  \item \textbf{Key prompts and outputs:} <Summarize the main instructions and what came back.>
+  \item \textbf{Human contribution and verification:} <The team must fill this in honestly
+        before any submission: what the members checked, changed or wrote themselves.>
+\end{enumerate}
+
+\end{document}
