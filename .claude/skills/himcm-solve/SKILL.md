@@ -42,3 +42,45 @@ problem into `data/` and unzip any zipped data there.
 Read `problem.txt` in full. If the original is a PDF with figures or tables, also open it so you
 can see them.
 
+## Stage 1: Learn the standard
+
+1. Read `judging-guide.md` end to end. It says what judges reward and penalize, and its rubric
+   is the one you will be scored on in Stage 7.
+2. If you have past winning papers for *other* problems with similar core math, read 2 or 3 of
+   them and write `references.md` with concrete observations on each: how the summary sheet is
+   built, how assumptions are justified, how the model is developed and validated, how
+   sensitivity is shown, and what to borrow here. Borrow structure and rigor, never text or
+   numbers. Never read papers or commentary for this problem itself.
+3. If you have judges' commentary on similar problems, add a `## Lessons` section to
+   `references.md`: the discriminators judges flagged, common mistakes, and techniques that
+   apply to *this* problem. Carry them into Stages 2–6.
+
+## Stage 2: `analysis.md`
+
+- **Restatement**: the problem in your own words, with its context and who will use the answer.
+- **Every question it asks**, as a numbered checklist (Q1, Q2a, Q2b, …). For each, give the exact
+  quoted wording, what kind of answer it needs (a number, a model, a ranking, a plan, a letter),
+  and what "fully answered" looks like. Include implicit asks ("justify", "test", "discuss
+  limitations") and every deliverable or format requirement: memos, letters, one-page
+  non-technical summaries, word or page limits.
+- **Statement hints**: list every fact, hint or "information to consider" item in the statement,
+  and every cause or concern its background names. For each, name the mechanism that will carry
+  it (a state variable, a rate that depends on it, a feedback) or say why it is left out, and add
+  it to the coverage table. A hint that enters only as a ±x% multiplier on an existing parameter,
+  or a part of a question answered from a published guideline instead of the model (placement,
+  allocation, timing), counts as partial coverage. Build the mechanism when it costs one extra
+  state variable or feedback term.
+- **Approach sketch**: candidate methods for each question, the choice, and the main risks.
+- **Coverage table**: each requirement mapped to the paper section that will answer it. Later
+  stages keep this table current.
+
+## Stage 3: `assumptions.md`
+
+- Numbered assumptions **A1, A2, …**. Each one gives its statement, a justification (a cited
+  source or explicit reasoning, not "for simplicity" alone), the questions it affects, and
+  how the paper tests or relaxes it (link these to the sensitivity plan).
+- **Variables and parameters table**: symbol, meaning, units, value or range, source.
+- **Data needed**: for each item, where it comes from (problem attachment, public dataset with
+  URL, or a justified estimate), then fetch or construct it into `data/` and log every source
+  in `data/SOURCES.md`.
+
