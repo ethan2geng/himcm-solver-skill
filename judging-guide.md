@@ -78,3 +78,114 @@ The principles that come up again and again:
     beats lifting one from the Internet. Never simply re-present a published model
    .
 
+## Part 3: Section-by-section expectations
+
+### Summary sheet (page 1)
+- Write it **last**, as one page that stands alone.
+- Use three to five paragraphs: the problem restated in your own words, the methods (in
+  words, not equations), the model, and **the actual numerical results and recommendations
+  in context**.
+- The most common failure, flagged every year, is a summary that describes the process but
+  leaves out the results. "Teams should include results and not just a discussion of their
+  approaches".
+- It should make the reader want to read the paper. The best IM2C summaries also mention
+  strengths and weaknesses.
+
+### Table of contents
+- Finalist and Outstanding papers "preview their paper with an organized Table of Contents"
+ .
+
+### Introduction, background and restatement
+- Keep the background brief. Restate the problem and the specific questions, and preview the
+  approach, ideally with a diagram of the modeling process. "Do not simply repeat the summary"
+ .
+
+### Assumptions with justifications
+- Include only assumptions that the model actually needs; ask "do we need this to develop or
+  support our model?" Long "laundry lists", "smoke screens" and irrelevant assumptions (such
+  as "no catastrophe destroys the system") count against the paper.
+- **Facts given in the problem are not assumptions**.
+- Every assumption gets a short justification, with a citation where possible.
+  Avoid over-simplifying to the point where the problem can no longer be fully solved.
+- List them together, up front, and note where each is used ("A7 is used in Model 4")
+ . Link the key ones to the sensitivity analysis: "if you assumed a value, how
+  would changing it affect your conclusions?".
+
+### Variables and notation
+- Give a table of symbol, meaning and units. Keep the set manageable, don't define variables
+  you never use, and remind the reader of definitions and units where the variables are used
+ .
+
+### Mathematical model
+- Show the development, the reasons for the choices, and how it follows from the assumptions.
+  Present the full final model, and connect any sub-models logically.
+- If code is used, describe its logic in the paper with an algorithm or flowchart; "judges
+  expect to see an algorithm or flow chart from which the code was developed". A simulation must run many trials, and its inputs must be varied.
+- Cite any existing model or equation at the point where it is used.
+- Keep discussion of models that were tried and then dropped brief.
+- Each hint in the statement ("information to consider", the causes its background names)
+  should be carried by a mechanism in the model, or its omission explained. A hint handled only
+  as a parameter multiplier is partial coverage.
+- Where the model allows it, derive one result in closed form (an equilibrium, a threshold, a
+  scaling law) and use it to explain what the simulation shows. It is the clearest evidence that
+  the authors understand their model.
+
+### Results and answers to every requirement
+- Apply the model to the actual scenario and data. Give specific answers to every question,
+  with numbers, units and interpretation. Better papers make tradeoffs explicit and back
+  every decision with analysis.
+- When a question asks how two quantities are related, its implied requirements include
+  direction (and any feedback) and timing, not only strength and form. When it asks which model
+  is best, the comparison should use equal information and the horizon at which the model is
+  later used.
+- When the answer is a quantity to provide (units, staff, stock), better papers show what each
+  extra unit buys and what it costs or harms, and choose a point on that curve. A reliability
+  target alone leaves the reader without the tradeoff.
+
+### Sensitivity analysis and validation
+- A "very important part of the modeling process" that "tests" the assumptions and parameter
+  values, for instance by changing them ±10% and discussing what happens to the answer.
+  In ranking or weighting models it is critical: how sensitive is the winner to the weights?
+ . Judges have repeatedly called it the discriminator that "few papers" did well
+ .
+- Validate the model, "even if by numerical example or intuition". "Model
+  testing is not the same as testing arithmetic".
+
+### Strengths and weaknesses (limitations)
+- Be open and honest: under what conditions does the model work best, and where does it
+  fail? Connect weaknesses back to assumptions, and propose extensions or what you would do
+  with more time.
+
+### Required non-technical deliverable (letter, memo, article, blog, infographic)
+- Write for the stated reader, who has no math background: results, recommendations, and why
+  they matter to that reader, with **no equations**. Graphics and flowcharts help.
+- Follow the requested format and purpose exactly. A memo meant to help someone decide must
+  be usable for that decision, not a summary of the mathematics.
+- Bring the specific recommendations here.
+- Match the medium as well as the audience: a web infographic or blog is a designed page, with
+  the answer numbers in large type, labelled visual cards and one chart whose title states its
+  message. It is not a page of the paper.
+
+### Conclusion
+- State explicitly the answer to each requirement or scenario question. This is not a second
+  summary.
+
+### Citations and references
+- Cite in line at the point of use for every outside model, equation, data value, figure and
+  table, and include a reference list at the end. "Lack of documentation will result in a
+  lower designation." Prefer primary sources over Wikipedia. Unreferenced
+  diagrams copied from the web are a recurring complaint.
+
+### Presentation and rules
+- Stay within the page limit with at least 12-point font, and don't shrink fonts or margins
+  to fit more. Papers that do "are unlikely to score well". The current limit is 25
+  pages including the summary, contents, references and appendices. The COMAP "Report on Use
+  of AI" is appended after the references and does not count.
+- Put no student or school names in the paper. Put the team control number on every page.
+  Use English for all symbols in tables and graphs. Spell-check and proofread.
+- Graphs need labeled axes, units and legends, must "make sense", and should be readable in
+  grayscale, using line styles and markers rather than color alone.
+- Tell a story in a logical sequence, so that each section leads into the next.
+- Captions and results headings state the finding first, then what is shown. Volume is not
+  quality: robustness tables that change no answer dilute the message.
+
