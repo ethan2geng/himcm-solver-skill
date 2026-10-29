@@ -44,3 +44,36 @@ Everything lands in `solutions/<name>/`:
 | `review.md` | score table across rounds + final review |
 | `STATUS.md` | stage checklist; rerun the command to resume from where it stopped |
 
+## How it works
+
+| Stage | Output |
+|---|---|
+| 0. Set up | solution folder, problem text, data |
+| 1. Learn the standard | read the judging guide (and similar past winning papers, if you have them) |
+| 2. Analysis | every explicit and implied requirement, mapped to paper sections |
+| 3. Assumptions | A1, A2, … each justified and linked to a sensitivity test |
+| 4. Model | formulation, validation, one closed-form result, scenarios |
+| 5. Code | `model.py` with sensitivity analysis, asserts and checked figures |
+| 6. Paper | one-page summary, finding-first captions, plain-language explanations, 12pt only |
+| 7. Judge → revise | a fresh judge each round; 2–3 revisions; a revision may not lengthen the paper |
+| 8. Compile | PDF under 25 pages |
+
+Key rules the skill enforces:
+
+- **Every number in the paper comes from running the code.** No typed-in results.
+- **No solution-hunting.** Web search is for data and facts only.
+- **Real citations only.** Estimated data is labeled as an estimate.
+- **Write for a non-specialist math teacher.** Explain each method in plain words or cut it.
+
+## The judge
+
+`himcm-judge` scores 12 sections from 1 to 10 with weights (model development and results ×3,
+summary and sensitivity ×2, …), applies score caps (e.g. a summary with no numbers caps at 5),
+and gives a designation estimate from Successful Participant to Outstanding contender. It's
+intentionally stricter than real panels, so read the estimate as a relative score, not a
+prediction of the award.
+
+## Academic honesty
+
+HiMCM requires a Report on Use of AI, and the template includes one. Check your contest's
+current rules on AI use before submitting anything this produces.
